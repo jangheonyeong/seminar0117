@@ -1,25 +1,35 @@
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
 const btn = document.querySelector("#dangerBtn");
-const warning = document.querySelector("#warning");
 
 let clickedCount = 0;
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", async () => {
   clickedCount += 1;
 
-  // 메시지 표시
-  warning.hidden = false;
-
-  // 클릭할수록 더 "화난" 느낌(텍스트는 요청대로 동일하게 유지)
+  // 버튼 흔들림(기존 느낌 유지)
   btn.classList.remove("shake");
-  // reflow 트릭으로 애니메이션 재시작
-  void btn.offsetWidth;
+  void btn.offsetWidth; // 애니메이션 재시작
   btn.classList.add("shake");
-
-  // 버튼 라벨은 유지하되, 미묘한 상태 변화만 주기
   btn.dataset.clicked = "true";
 
-  // 두 번째 클릭부터는 경고 박스를 더 강조
-  if (clickedCount >= 2) {
-    warning.classList.add("louder");
-  }
+  // SweetAlert2 경고창
+  await Swal.fire({
+    icon: "warning",
+    title: "I Said Do Not Click This Button",
+    html: clickedCount >= 2 ? "…또 누르셨네요." : "You were warned.",
+    confirmButtonText: "OK",
+    buttonsStyling: false, // CSS로 버튼 스타일 완전 커스텀
+    customClass: {
+      popup: "swal-navy-popup",
+      title: "swal-navy-title",
+      htmlContainer: "swal-navy-text",
+      confirmButton: "swal-navy-confirm",
+      icon: "swal-navy-icon",
+    },
+    backdrop: "rgba(2, 6, 18, 0.72)",
+    showClass: { popup: "swal2-show swal-navy-show" },
+    hideClass: { popup: "swal2-hide swal-navy-hide" },
+  });
 });
