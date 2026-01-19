@@ -1,0 +1,138 @@
+:root {
+  --bg0: #060a16;
+  --bg1: #08122a;
+  --card: rgba(10, 26, 56, 0.62);
+  --border: rgba(120, 170, 255, 0.18);
+  --text: #e7efff;
+  --muted: rgba(231, 239, 255, 0.72);
+
+  --btn: #0b2a5f;
+  --btn2: #0d3a86;
+  --btnBorder: rgba(145, 195, 255, 0.25);
+
+  --warnBg: rgba(255, 78, 78, 0.12);
+  --warnBorder: rgba(255, 120, 120, 0.35);
+  --warnText: #ffd1d1;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+    Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 50% 25%, rgba(64, 125, 255, 0.16), transparent 60%),
+    radial-gradient(700px 420px at 25% 70%, rgba(74, 190, 255, 0.10), transparent 55%),
+    linear-gradient(180deg, var(--bg1), var(--bg0));
+}
+
+.app {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: min(680px, 92vw);
+  padding: 34px 28px 28px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: clamp(22px, 3.4vw, 30px);
+  color: rgba(231, 239, 255, 0.92);
+}
+
+.big-btn {
+  width: 100%;
+  padding: 22px 18px;
+  font-size: clamp(20px, 3.6vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border-radius: 16px;
+  border: 1px solid var(--btnBorder);
+  color: var(--text);
+  background: linear-gradient(180deg, var(--btn2), var(--btn));
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  user-select: none;
+}
+
+.big-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(145, 195, 255, 0.38);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.big-btn:active {
+  transform: translateY(1px);
+}
+
+.big-btn:focus-visible {
+  outline: 3px solid rgba(120, 170, 255, 0.45);
+  outline-offset: 4px;
+}
+
+/* 클릭 후 아주 약간 더 위험해 보이게 */
+.big-btn[data-clicked="true"] {
+  border-color: rgba(255, 120, 120, 0.28);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 120, 120, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.warning {
+  margin: 18px 0 6px;
+  padding: 14px 14px;
+  border-radius: 14px;
+  background: var(--warnBg);
+  border: 1px solid var(--warnBorder);
+  color: var(--warnText);
+  font-weight: 800;
+  font-size: clamp(16px, 2.6vw, 20px);
+  letter-spacing: -0.01em;
+}
+
+/* 두 번째 클릭부터 더 강조 */
+.warning.louder {
+  box-shadow: 0 0 0 6px rgba(255, 78, 78, 0.06);
+}
+
+.hint {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 버튼 흔들림 */
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 220ms ease-in-out;
+}

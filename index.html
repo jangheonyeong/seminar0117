@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Do Not Click</title>
+    <link rel="stylesheet" href="/indexStyles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card" aria-label="Warning Button">
+        <h1 class="title">Seriously.</h1>
+
+        <button id="dangerBtn" class="big-btn" type="button">
+          Do Not Click This Button
+        </button>
+
+        <div
+          id="warning"
+          class="warning"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          hidden
+        >
+          I Said Do Not Click This Button
+        </div>
+
+        <p class="hint">…근데 누를 것 같아서 미리 적어둡니다.</p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
