@@ -61,6 +61,13 @@ body {
   color: rgba(231, 239, 255, 0.92);
 }
 
+/* 버튼 영역 */
+.actions{
+  display: grid;
+  gap: 12px;
+}
+
+/* 메인 버튼 */
 .big-btn {
   width: 100%;
   padding: 22px 18px;
@@ -103,6 +110,38 @@ body {
     0 22px 44px rgba(0, 0, 0, 0.42),
     0 0 0 1px rgba(255, 120, 120, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* 이동 버튼(서브) */
+.sub-btn{
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 750;
+  border-radius: 14px;
+  border: 1px solid rgba(145, 195, 255, 0.22);
+  color: rgba(231, 239, 255, 0.88);
+  background: rgba(10, 26, 56, 0.35);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, filter 120ms ease;
+}
+
+.sub-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(145, 195, 255, 0.36);
+  filter: brightness(1.05);
+}
+
+.sub-btn:active{
+  transform: translateY(1px);
+}
+
+.sub-btn:focus-visible{
+  outline: 3px solid rgba(120, 170, 255, 0.35);
+  outline-offset: 4px;
 }
 
 .hint {

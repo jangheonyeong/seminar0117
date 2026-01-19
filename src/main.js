@@ -1,18 +1,19 @@
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 
-const btn = document.querySelector("#dangerBtn");
+const dangerBtn = document.querySelector("#dangerBtn");
+const goBasicBtn = document.querySelector("#goBasicBtn");
 
 let clickedCount = 0;
 
-btn.addEventListener("click", async () => {
+dangerBtn.addEventListener("click", async () => {
   clickedCount += 1;
 
   // 버튼 흔들림(기존 느낌 유지)
-  btn.classList.remove("shake");
-  void btn.offsetWidth; // 애니메이션 재시작
-  btn.classList.add("shake");
-  btn.dataset.clicked = "true";
+  dangerBtn.classList.remove("shake");
+  void dangerBtn.offsetWidth; // 애니메이션 재시작
+  dangerBtn.classList.add("shake");
+  dangerBtn.dataset.clicked = "true";
 
   // SweetAlert2 경고창
   await Swal.fire({
@@ -32,4 +33,10 @@ btn.addEventListener("click", async () => {
     showClass: { popup: "swal2-show swal-navy-show" },
     hideClass: { popup: "swal2-hide swal-navy-hide" },
   });
+});
+
+// basicChatbot.html로 이동
+goBasicBtn.addEventListener("click", () => {
+  // Vite에서 보통 루트(public 또는 프로젝트 루트의 html) 기준으로 접근합니다.
+  window.location.href = "/basicChatbot.html";
 });
